@@ -52,9 +52,9 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold text-osu-scarlet">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Cell Membrane Repair & MG53 Protein
                 </h3>
               </div>
@@ -66,9 +66,9 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold text-osu-scarlet">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Cancer Biology & Tumor Suppressors
                 </h3>
               </div>
@@ -80,9 +80,9 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold text-osu-scarlet">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Regenerative Medicine & Wound Healing
                 </h3>
               </div>
@@ -94,9 +94,9 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="mb-4">
-                <h3 className="text-xl font-semibold text-osu-scarlet">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Translational Medicine
                 </h3>
               </div>
@@ -119,22 +119,22 @@ export default function Home() {
             <div className="w-24 h-1 bg-osu-scarlet mx-auto"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="text-4xl font-bold osu-scarlet mb-2">3,096</div>
-              <div className="text-lg text-gray-700">Total Citations</div>
-            </div>
-            
-            <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="text-4xl font-bold osu-scarlet-light mb-2">30</div>
-              <div className="text-lg text-gray-700">H-Index</div>
-            </div>
-            
-            <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="text-4xl font-bold osu-accent mb-2">48+</div>
-              <div className="text-lg text-gray-700">Publications</div>
-            </div>
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
+                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>3,096</div>
+                  <div className="text-lg text-gray-700 font-medium">Total Citations</div>
+                </div>
+                
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
+                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>30</div>
+                  <div className="text-lg text-gray-700 font-medium">H-Index</div>
+                </div>
+                
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
+                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>48+</div>
+                  <div className="text-lg text-gray-700 font-medium">Publications</div>
+                </div>
+              </div>
         </div>
       </section>
     </div>

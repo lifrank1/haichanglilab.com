@@ -45,59 +45,75 @@ export default function Publications() {
         </div>
       </section>
 
-      {/* Search and Filter Controls */}
-      <section className="py-8 bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-            {/* Search */}
-            <div className="w-full md:w-1/2">
-              <input
-                type="text"
-                placeholder="Search publications by title, author, or journal..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300"
-              />
+          {/* Search and Filter Controls */}
+          <section className="py-12 bg-white border-b border-gray-200">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+                <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+                  {/* Search */}
+                  <div className="w-full lg:w-1/2">
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Search Publications
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Search by title, author, or journal..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300 text-lg"
+                    />
+                  </div>
+                  
+                  {/* Sort Controls */}
+                  <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Sort by
+                      </label>
+                      <select
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value as 'year' | 'citations')}
+                        className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300"
+                      >
+                        <option value="year">Year</option>
+                        <option value="citations">Citations</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Order
+                      </label>
+                      <select
+                        value={sortOrder}
+                        onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
+                        className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300"
+                      >
+                        <option value="desc">Descending</option>
+                        <option value="asc">Ascending</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Results count and clear button */}
+                <div className="mt-6 flex items-center justify-between">
+                  <div className="text-sm text-gray-600 font-medium">
+                    Showing {filteredAndSortedPublications.length} of {publications.length} publications
+                  </div>
+                  {searchTerm && (
+                    <button
+                      onClick={() => setSearchTerm('')}
+                      className="text-sm font-medium px-4 py-2 rounded-lg transition-all duration-300"
+                      style={{ color: '#ba0d2f', backgroundColor: '#ba0d2f20' }}
+                    >
+                      Clear search
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
-            
-            {/* Sort Controls */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as 'year' | 'citations')}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300"
-              >
-                <option value="year">Sort by Year</option>
-                <option value="citations">Sort by Citations</option>
-              </select>
-              
-              <select
-                value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
-                className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-osu-scarlet focus:border-osu-scarlet transition-all duration-300"
-              >
-                <option value="desc">Descending</option>
-                <option value="asc">Ascending</option>
-              </select>
-            </div>
-          </div>
-          
-          {/* Results count */}
-          <div className="mt-4 flex items-center justify-between">
-            <div className="text-sm text-gray-600">
-              Showing {filteredAndSortedPublications.length} of {publications.length} publications
-            </div>
-            {searchTerm && (
-              <button
-                onClick={() => setSearchTerm('')}
-                className="text-sm text-osu-scarlet hover:text-osu-scarlet/80 transition-colors duration-300"
-              >
-                Clear search
-              </button>
-            )}
-          </div>
-        </div>
-      </section>
+          </section>
 
       {/* Publications List */}
       <section className="py-12 bg-gray-50">

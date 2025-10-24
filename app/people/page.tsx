@@ -7,7 +7,7 @@ export default function People() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h2 className="text-3xl font-bold" style={{ color: '#ba0d2f' }}>Principal Investigator</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Principal Investigator</h2>
             <div className="w-24 h-1 mx-auto mt-4" style={{ backgroundColor: '#ba0d2f' }}></div>
           </div>
           
@@ -85,7 +85,7 @@ export default function People() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4" style={{ color: '#ba0d2f' }}>Research Team</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Research Team</h2>
             <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We are always looking for talented researchers to join our team. 

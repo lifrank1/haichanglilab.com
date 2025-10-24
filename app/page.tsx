@@ -4,10 +4,10 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-subtle-gradient py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
+          <section className="bg-subtle-gradient py-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div className="animate-fade-in-left">
               <h1 className="text-4xl md:text-5xl font-bold text-osu-scarlet mb-6">
                 Dr. Haichang Li
               </h1>
@@ -27,18 +27,18 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="flex justify-center">
-              <div className="relative">
-                <Image
-                  src="/headshot.png"
-                  alt="Dr. Haichang Li"
-                  width={400}
-                  height={400}
-                  className="rounded-lg shadow-lg hover-lift transition-all duration-300"
-                  priority
-                />
-              </div>
-            </div>
+                <div className="flex justify-center animate-fade-in-right">
+                  <div className="relative">
+                    <Image
+                      src="/headshot.png"
+                      alt="Dr. Haichang Li"
+                      width={400}
+                      height={400}
+                      className="rounded-lg shadow-lg hover-lift transition-all duration-300 animate-gentle-float"
+                      priority
+                    />
+                  </div>
+                </div>
           </div>
         </div>
       </section>
@@ -52,7 +52,7 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group animate-fade-in-up">
               <div className="mb-6">
                 <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Cell Membrane Repair & MG53 Protein
@@ -66,7 +66,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <div className="mb-6">
                 <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Cancer Biology & Tumor Suppressors
@@ -80,7 +80,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div className="mb-6">
                 <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Regenerative Medicine & Wound Healing
@@ -94,7 +94,7 @@ export default function Home() {
               </p>
             </div>
             
-            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+            <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <div className="mb-6">
                 <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
                   Translational Medicine
@@ -120,18 +120,18 @@ export default function Home() {
           </div>
           
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
-                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>3,096</div>
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200 animate-scale-in">
+                  <div className="text-4xl font-bold mb-2 animate-subtle-pulse" style={{ color: '#ba0d2f' }}>3,096</div>
                   <div className="text-lg text-gray-700 font-medium">Total Citations</div>
                 </div>
                 
-                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
-                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>30</div>
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200 animate-scale-in" style={{ animationDelay: '0.1s' }}>
+                  <div className="text-4xl font-bold mb-2 animate-subtle-pulse" style={{ color: '#ba0d2f' }}>30</div>
                   <div className="text-lg text-gray-700 font-medium">H-Index</div>
                 </div>
                 
-                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200">
-                  <div className="text-4xl font-bold mb-2" style={{ color: '#ba0d2f' }}>48+</div>
+                <div className="text-center bg-white rounded-xl p-8 shadow-lg hover:shadow-xl hover-lift transition-all duration-300 border border-gray-200 animate-scale-in" style={{ animationDelay: '0.2s' }}>
+                  <div className="text-4xl font-bold mb-2 animate-subtle-pulse" style={{ color: '#ba0d2f' }}>48+</div>
                   <div className="text-lg text-gray-700 font-medium">Publications</div>
                 </div>
               </div>

@@ -48,7 +48,7 @@ export default function Publications() {
           {/* Search and Filter Controls */}
           <section className="py-12 bg-white border-b border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200">
+              <div className="bg-gray-50 rounded-xl p-8 border border-gray-200 animate-fade-in-up">
                 <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
                   {/* Search */}
                   <div className="w-full lg:w-1/2">
@@ -119,13 +119,15 @@ export default function Publications() {
       <section className="py-12 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredAndSortedPublications.length === 0 ? (
-            <div className="text-center py-12">
+            <div className="text-center py-12 animate-fade-in-up">
               <p className="text-gray-600">No publications found matching your search criteria.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 gap-6">
-              {filteredAndSortedPublications.map((publication) => (
-                <PublicationCard key={publication.id} publication={publication} />
+              {filteredAndSortedPublications.map((publication, index) => (
+                <div key={publication.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <PublicationCard publication={publication} />
+                </div>
               ))}
             </div>
           )}

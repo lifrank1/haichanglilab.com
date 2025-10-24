@@ -12,9 +12,9 @@ export default function People() {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
               <div className="lg:flex">
-                <div className="lg:w-2/5 p-8">
+                <div className="lg:w-2/5 p-8 animate-fade-in-left">
                   <div className="relative mb-6">
                     <Image
                       src="/headshot.png"
@@ -40,7 +40,7 @@ export default function People() {
                     </div>
                   </div>
                 </div>
-                <div className="lg:w-3/5 p-8">
+                <div className="lg:w-3/5 p-8 animate-fade-in-right">
                   <h3 className="text-3xl font-bold text-gray-900 mb-3">Dr. Haichang Li</h3>
                   <p className="text-xl font-semibold mb-4" style={{ color: '#ba0d2f' }}>Assistant Professor</p>
                   <p className="text-gray-600 mb-6">
@@ -95,8 +95,8 @@ export default function People() {
           
           {/* Placeholder for future team members */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 border border-gray-100">
-              <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center" style={{ backgroundColor: '#ba0d2f' }}>
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 border border-gray-100 animate-scale-in">
+              <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center animate-subtle-pulse" style={{ backgroundColor: '#ba0d2f' }}>
                 <span className="text-white text-3xl font-bold">+</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Join Our Team</h3>

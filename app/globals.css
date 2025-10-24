@@ -42,6 +42,28 @@ body {
   }
 }
 
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes subtlePulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
@@ -50,6 +72,37 @@ body {
 @keyframes gentleFloat {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-3px); }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
 }
 
 @layer utilities {
@@ -86,10 +139,15 @@ body {
   .bg-osu-light-gray { background-color: var(--osu-light-gray); }
   .bg-osu-accent { background-color: var(--osu-accent); }
   
-  /* Subtle Animation Classes */
-  .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
-  .animate-subtle-pulse { animation: subtlePulse 3s ease-in-out infinite; }
-  .animate-gentle-float { animation: gentleFloat 4s ease-in-out infinite; }
+      /* Subtle Animation Classes */
+      .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+      .animate-fade-in-left { animation: fadeInLeft 0.6s ease-out; }
+      .animate-fade-in-right { animation: fadeInRight 0.6s ease-out; }
+      .animate-slide-in-top { animation: slideInFromTop 0.6s ease-out; }
+      .animate-scale-in { animation: scaleIn 0.5s ease-out; }
+      .animate-subtle-pulse { animation: subtlePulse 3s ease-in-out infinite; }
+      .animate-gentle-float { animation: gentleFloat 4s ease-in-out infinite; }
+      .animate-shimmer { animation: shimmer 2s linear infinite; }
   
   /* Professional Gradient Backgrounds */
   .bg-subtle-gradient {

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -9,10 +10,10 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '/', icon: '🧬' },
-    { name: 'People', href: '/people', icon: '👥' },
-    { name: 'Publications', href: '/publications', icon: '📚' },
-    { name: 'Contact', href: '/contact', icon: '📧' },
+    { name: 'HOME', href: '/', icon: '🧬' },
+    { name: 'PEOPLE', href: '/people', icon: '👥' },
+    { name: 'PUBLICATIONS', href: '/publications', icon: '📚' },
+    { name: 'CONTACT', href: '/contact', icon: '📧' },
   ];
 
   return (
@@ -20,24 +21,20 @@ const Navigation = () => {
       {/* Above-header bar */}
       <div className="bg-osu-scarlet text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-base">
+          <div className="flex justify-between items-center text-lg font-bold">
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
-                <span>🏛️</span>
                 <span>The Ohio State University</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>📍</span>
                 <span>1900 Coffey Road, Columbus, OH 43210</span>
               </div>
             </div>
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
-                <span>📞</span>
                 <span>614-247-5703</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>✉️</span>
                 <span>li.3714@osu.edu</span>
               </div>
             </div>
@@ -49,14 +46,21 @@ const Navigation = () => {
       <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-32">
-          <div className="flex items-center">
-            <Link 
-              href="/" 
-              className="text-4xl font-bold text-gray-900 hover:text-osu-scarlet transition-colors duration-300"
-            >
-              Li Lab
-            </Link>
-          </div>
+              <div className="flex items-center space-x-4">
+                <Image
+                  src="/osulogo.png"
+                  alt="Ohio State University"
+                  width={60}
+                  height={60}
+                  className="object-contain"
+                />
+                <Link 
+                  href="/" 
+                  className="text-4xl font-bold text-gray-900 hover:text-osu-scarlet transition-colors duration-300"
+                >
+                  Li Lab
+                </Link>
+              </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:block">
@@ -65,11 +69,12 @@ const Navigation = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`px-6 py-4 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  className={`px-6 py-4 text-2xl font-bold transition-colors duration-300 ${
                     pathname === item.href
-                      ? 'text-osu-scarlet bg-gray-50'
-                      : 'text-gray-700 hover:text-osu-scarlet hover:bg-gray-50'
+                      ? 'underline'
+                      : 'hover:underline'
                   }`}
+                  style={{ color: '#ba0d2f' }}
                 >
                   {item.name}
                 </Link>
@@ -100,11 +105,12 @@ const Navigation = () => {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-6 py-4 rounded-md text-lg font-medium transition-colors duration-300 ${
+                  className={`block px-6 py-4 text-2xl font-bold transition-colors duration-300 ${
                     pathname === item.href
-                      ? 'text-osu-scarlet bg-gray-50'
-                      : 'text-gray-700 hover:text-osu-scarlet hover:bg-gray-50'
+                      ? 'underline'
+                      : 'hover:underline'
                   }`}
+                  style={{ color: '#ba0d2f' }}
                 >
                   {item.name}
                 </Link>

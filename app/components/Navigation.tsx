@@ -24,18 +24,15 @@ const Navigation = () => {
           <div className="flex justify-between items-center text-lg font-bold">
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
-                <span>The Ohio State University</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span>1900 Coffey Road, Columbus, OH 43210</span>
+                <span className="decoration-2 underline-offset-2">1900 Coffey Road, Columbus, OH 43210</span>
               </div>
             </div>
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
-                <span>614-247-5703</span>
+                <span className="underline decoration-2 underline-offset-2">614-247-5703</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span>li.3714@osu.edu</span>
+                <span className="underline decoration-2 underline-offset-2">li.3714@osu.edu</span>
               </div>
             </div>
           </div>

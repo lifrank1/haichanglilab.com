@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 :root {
+  --osu-red: #BB0000;
+  --osu-gray: #666666;
+  --osu-light-gray: #f8f9fa;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f2937;
+  
+  /* OSU Scarlet Red Color Palette */
+  --osu-scarlet: #BB0000;
+  --osu-scarlet-light: #dc2626;
+  --osu-scarlet-dark: #991b1b;
+  --osu-gray: #6b7280;
+  --osu-light-gray: #f3f4f6;
+  --osu-accent: #ef4444;
+  --subtle-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 
 @theme inline {
@@ -12,15 +24,86 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Subtle Professional Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .osu-red {
+    color: var(--osu-red);
+  }
+  
+  .bg-osu-red {
+    background-color: var(--osu-red);
+  }
+  
+  .border-osu-red {
+    border-color: var(--osu-red);
+  }
+  
+  .hover-osu-red:hover {
+    color: var(--osu-red);
+  }
+  
+  /* OSU Scarlet Red Utilities */
+  .osu-scarlet { color: var(--osu-scarlet); }
+  .osu-scarlet-light { color: var(--osu-scarlet-light); }
+  .osu-scarlet-dark { color: var(--osu-scarlet-dark); }
+  .osu-gray { color: var(--osu-gray); }
+  .osu-accent { color: var(--osu-accent); }
+  
+  .bg-osu-scarlet { background-color: var(--osu-scarlet); }
+  .bg-osu-scarlet-light { background-color: var(--osu-scarlet-light); }
+  .bg-osu-scarlet-dark { background-color: var(--osu-scarlet-dark); }
+  .bg-osu-light-gray { background-color: var(--osu-light-gray); }
+  .bg-osu-accent { background-color: var(--osu-accent); }
+  
+  /* Subtle Animation Classes */
+  .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+  .animate-subtle-pulse { animation: subtlePulse 3s ease-in-out infinite; }
+  .animate-gentle-float { animation: gentleFloat 4s ease-in-out infinite; }
+  
+  /* Professional Gradient Backgrounds */
+  .bg-subtle-gradient {
+    background: var(--subtle-gradient);
+  }
+  
+  /* Professional Hover Effects */
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+    transition: box-shadow 0.3s ease;
+  }
 }

@@ -53,10 +53,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-osu-scarlet rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">🧬</span>
-                </div>
+              <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 osu-scarlet">
                   Cell Membrane Repair & MG53 Protein
                 </h3>
@@ -70,10 +67,7 @@ export default function Home() {
             </div>
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-osu-scarlet-light rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">🔬</span>
-                </div>
+              <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 osu-scarlet-light">
                   Cancer Biology & Tumor Suppressors
                 </h3>
@@ -87,10 +81,7 @@ export default function Home() {
             </div>
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-osu-accent rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">🩹</span>
-                </div>
+              <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 osu-accent">
                   Regenerative Medicine & Wound Healing
                 </h3>
@@ -104,10 +95,7 @@ export default function Home() {
             </div>
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
-              <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-osu-scarlet-dark rounded-full flex items-center justify-center mr-3">
-                  <span className="text-white text-sm">💊</span>
-                </div>
+              <div className="mb-4">
                 <h3 className="text-xl font-semibold text-gray-900 osu-scarlet-dark">
                   Translational Medicine
                 </h3>
@@ -133,30 +121,18 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="w-16 h-16 bg-osu-scarlet rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📈</span>
-              </div>
               <div className="text-4xl font-bold osu-scarlet mb-2">3,096</div>
               <div className="text-lg text-gray-700">Total Citations</div>
-              <div className="mt-2 text-sm text-gray-500">Growing impact in molecular biology</div>
             </div>
             
             <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="w-16 h-16 bg-osu-scarlet-light rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">🎯</span>
-              </div>
               <div className="text-4xl font-bold osu-scarlet-light mb-2">30</div>
               <div className="text-lg text-gray-700">H-Index</div>
-              <div className="mt-2 text-sm text-gray-500">High-quality research output</div>
             </div>
             
             <div className="text-center bg-white rounded-lg p-8 shadow-md hover-lift hover-glow transition-all duration-300">
-              <div className="w-16 h-16 bg-osu-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl">📚</span>
-              </div>
               <div className="text-4xl font-bold osu-accent mb-2">48+</div>
               <div className="text-lg text-gray-700">Publications</div>
-              <div className="mt-2 text-sm text-gray-500">Peer-reviewed research articles</div>
             </div>
           </div>
         </div>

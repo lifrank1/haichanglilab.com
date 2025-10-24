@@ -8,7 +8,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-osu-scarlet mb-6">
                 Dr. Haichang Li
               </h1>
               <p className="text-xl text-gray-600 mb-4">
@@ -47,14 +47,14 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Research Overview</h2>
+            <h2 className="text-3xl font-bold text-osu-scarlet mb-4">Research Overview</h2>
             <div className="w-24 h-1 bg-osu-scarlet mx-auto"></div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 osu-scarlet">
+                <h3 className="text-xl font-semibold text-osu-scarlet">
                   Cell Membrane Repair & MG53 Protein
                 </h3>
               </div>
@@ -68,7 +68,7 @@ export default function Home() {
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 osu-scarlet-light">
+                <h3 className="text-xl font-semibold text-osu-scarlet">
                   Cancer Biology & Tumor Suppressors
                 </h3>
               </div>
@@ -82,7 +82,7 @@ export default function Home() {
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 osu-accent">
+                <h3 className="text-xl font-semibold text-osu-scarlet">
                   Regenerative Medicine & Wound Healing
                 </h3>
               </div>
@@ -96,7 +96,7 @@ export default function Home() {
             
             <div className="bg-white rounded-lg shadow-md hover-lift hover-glow transition-all duration-300 p-6 border border-gray-100">
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-900 osu-scarlet-dark">
+                <h3 className="text-xl font-semibold text-osu-scarlet">
                   Translational Medicine
                 </h3>
               </div>
@@ -115,7 +115,7 @@ export default function Home() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Research Impact</h2>
+            <h2 className="text-3xl font-bold text-osu-scarlet mb-4">Research Impact</h2>
             <div className="w-24 h-1 bg-osu-scarlet mx-auto"></div>
           </div>
           

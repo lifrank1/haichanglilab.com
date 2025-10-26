@@ -18,7 +18,7 @@ export const people: Person[] = [
     name: "Dr. Haichang Li",
     title: "Assistant Professor",
     affiliation: "The Ohio State University College of Veterinary Medicine",
-    image: "/headshot.png",
+    image: "/headshots/headshot1.png",
     researchFocus: "Dr. Li's research focuses on cell membrane repair mechanisms, particularly the MG53 protein, and its applications in regenerative medicine, cancer biology, and therapeutic protein development. His work spans from basic molecular mechanisms to translational applications, with significant contributions to understanding tissue repair, wound healing, and tumor suppression.",
     education: [
       "PhD, Molecular Biology and Genetics, Gifu University, Japan",

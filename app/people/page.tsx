@@ -7,21 +7,21 @@ interface PersonCardProps {
 
 function PersonCard({ person }: PersonCardProps) {
   return (
-    <div className="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
+    <div className="rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
       <div className="lg:flex">
         <div className="lg:w-2/5 p-8 animate-fade-in-left">
-          <div className="relative mb-6">
+          <div className="relative mb-6 flex justify-center">
             <Image
               src={person.image}
               alt={person.name}
               width={400}
               height={400}
-              className="w-full h-72 object-cover object-top rounded-lg border-4 border-gray-200 shadow-lg"
+              className="w-72 h-72 rounded-full object-cover border-4 border-gray-200 shadow-lg"
             />
           </div>
           
           {/* Contact Information */}
-          <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <div className="rounded-lg p-6">
             <h4 className="text-lg font-bold mb-4" style={{ color: '#ba0d2f' }}>Contact Information</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -48,7 +48,7 @@ function PersonCard({ person }: PersonCardProps) {
           
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Research Focus</h4>
-            <div className="bg-gray-50 rounded-lg p-4 border-l-4" style={{ borderLeftColor: '#ba0d2f' }}>
+            <div className="rounded-lg p-4 border-l-4" style={{ borderLeftColor: '#ba0d2f' }}>
               <p className="text-gray-700 leading-relaxed">
                 {person.researchFocus}
               </p>
@@ -59,7 +59,7 @@ function PersonCard({ person }: PersonCardProps) {
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {person.education.map((degree, index) => (
-                <div key={index} className="p-3 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200">
+                <div key={index} className="p-3 rounded-lg hover:shadow-md transition-all duration-200">
                   <p className="text-gray-700 font-medium text-sm">{degree}</p>
                 </div>
               ))}
@@ -76,10 +76,10 @@ export default function People() {
   const teamMembers = people.filter(person => !person.isPrincipalInvestigator);
 
   return (
-    <div className="bg-white">
+    <div>
       {/* Principal Investigator */}
       {principalInvestigators.length > 0 && (
-        <section className="py-20 bg-white">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20">
               <h2 className="text-3xl font-bold text-gray-900">Principal Investigator</h2>

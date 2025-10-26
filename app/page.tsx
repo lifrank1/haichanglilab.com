@@ -28,16 +28,14 @@ export default function Home() {
             </div>
             
                 <div className="flex justify-center animate-fade-in-right">
-                  <div className="relative">
-                    <Image
-                      src="/headshot.png"
-                      alt="Dr. Haichang Li"
-                      width={400}
-                      height={400}
-                      className="rounded-lg shadow-lg hover-lift transition-all duration-300 animate-gentle-float"
-                      priority
-                    />
-                  </div>
+                  <Image
+                    src="/headshots/headshot1.png"
+                    alt="Dr. Haichang Li"
+                    width={400}
+                    height={400}
+                    className="w-80 h-80 rounded-full object-cover border-4 border-gray-200 shadow-lg hover-lift transition-all duration-300 animate-gentle-float"
+                    priority
+                  />
                 </div>
           </div>
         </div>

@@ -141,6 +141,50 @@ export default function People() {
           </div>
         </div>
       </section>
+
+      {/* Lab Gallery Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Lab Gallery</h2>
+            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              A glimpse into our research environment and team activities.
+            </p>
+          </div>
+          
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="animate-fade-in-up">
+              <Image
+                src="/teampics/lab.jpeg"
+                alt="Lab Environment"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift"
+              />
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <Image
+                src="/teampics/labcoats.jpeg"
+                alt="Team in Lab Coats"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift"
+              />
+            </div>
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <Image
+                src="/teampics/pelotonia.jpeg"
+                alt="Pelotonia Event"
+                width={400}
+                height={300}
+                className="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover-lift"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

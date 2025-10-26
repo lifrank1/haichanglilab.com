@@ -1,0 +1,19 @@
+[
+  {
+    "id": "haichang-li",
+    "name": "Dr. Haichang Li",
+    "title": "Assistant Professor",
+    "affiliation": "The Ohio State University College of Veterinary Medicine",
+    "image": "/headshots/headshot1.png",
+    "researchFocus": "Dr. Li's research focuses on cell membrane repair mechanisms, particularly the MG53 protein, and its applications in regenerative medicine, cancer biology, and therapeutic protein development. His work spans from basic molecular mechanisms to translational applications, with significant contributions to understanding tissue repair, wound healing, and tumor suppression.",
+    "education": [
+      "PhD, Molecular Biology and Genetics, Gifu University, Japan",
+      "MS, Physiology and Biochemistry, Beijing Agricultural University, China",
+      "BA, Veterinary Science, Henan Agricultural University, China"
+    ],
+    "email": "li.3714@osu.edu",
+    "phone": "614-247-5703",
+    "address": "1900 Coffey Road, Columbus, OH 43210",
+    "isPrincipalInvestigator": true
+  }
+]

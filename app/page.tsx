@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { researchProjects, ResearchProject } from "../data/researchProjects";
+import researchProjectsData from "../data/researchProjects.json";
+import { ResearchProject } from "../data/types";
+
+// Type assertion to ensure proper typing
+const researchProjects: ResearchProject[] = researchProjectsData as ResearchProject[];
 
 interface ResearchProjectCardProps {
   project: ResearchProject;

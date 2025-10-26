@@ -1,7 +1,11 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { publications, Publication } from '../../data/publications';
+import publicationsData from '../../data/publications.json';
+import { Publication } from '../../data/types';
+
+// Type assertion to ensure proper typing
+const publications: Publication[] = publicationsData as Publication[];
 import PublicationCard from '../components/PublicationCard';
 
 export default function Publications() {

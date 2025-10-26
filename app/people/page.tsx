@@ -1,5 +1,9 @@
 import Image from "next/image";
-import { people, Person } from "../../data/people";
+import peopleData from "../../data/people.json";
+import { Person } from "../../data/types";
+
+// Type assertion to ensure proper typing
+const people: Person[] = peopleData as Person[];
 
 interface PersonCardProps {
   person: Person;

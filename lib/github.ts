@@ -2,8 +2,8 @@
 // This handles committing changes to the repository via GitHub API
 
 const GITHUB_API_BASE = 'https://api.github.com';
-const REPO_OWNER = 'frankli'; // Update this to your GitHub username
-const REPO_NAME = 'haichanglilab.com'; // Update this to your repository name
+const REPO_OWNER = 'lifrank1'; // Your GitHub username
+const REPO_NAME = 'haichanglilab.com'; // Your repository name
 
 export interface GitHubCommitResponse {
   success: boolean;
@@ -25,7 +25,7 @@ export async function getFileContent(
 ): Promise<GitHubFileContent | null> {
   try {
     const response = await fetch(
-      `${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
+      `${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=main`,
       {
         headers: {
           'Authorization': `token ${pat}`,
@@ -35,7 +35,9 @@ export async function getFileContent(
     );
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch file: ${response.statusText}`);
+      const errorText = await response.text();
+      console.error(`GitHub API Error (${response.status}):`, errorText);
+      throw new Error(`Failed to fetch file: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
@@ -86,13 +88,15 @@ export async function updateFile(
           message,
           content: btoa(content), // Encode content to base64
           sha,
+          branch: 'main', // Specify the branch
         }),
       }
     );
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(`Failed to update file: ${errorData.message || response.statusText}`);
+      const errorText = await response.text();
+      console.error(`GitHub API Error (${response.status}):`, errorText);
+      throw new Error(`Failed to update file: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();

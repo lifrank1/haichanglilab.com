@@ -5,9 +5,9 @@ This admin panel allows you to manage publications, people, and research project
 ## Setup
 
 1. **GitHub Configuration**
-   - Update the repository details in `lib/github.ts`:
-     - `REPO_OWNER`: Your GitHub username
-     - `REPO_NAME`: Your repository name
+   - Repository details are already configured in `lib/github.ts`:
+     - `REPO_OWNER`: lifrank1
+     - `REPO_NAME`: haichanglilab.com
 
 2. **Admin Password** (Optional)
    - The default password is `admin123` (hardcoded in `app/admin/page.tsx`)

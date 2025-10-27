@@ -296,7 +296,7 @@ export default function PeopleAdmin() {
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
                         className="h-10 w-10 rounded-full object-cover"
-                        src={person.image}
+                        src={person.image || '/headshots/headshot0.png'}
                         alt={person.name}
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = '/headshots/headshot0.png';

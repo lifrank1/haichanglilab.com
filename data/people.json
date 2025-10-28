@@ -30,5 +30,20 @@
     "address": "1900 Coffey Road, Columbus, Ohio 43210",
     "isPrincipalInvestigator": false,
     "id": "zhongguang-li"
+  },
+  {
+    "name": "Umme Lubaba",
+    "title": "Graduate Research Assistant",
+    "affiliation": "The Ohio State University College of Veterinary Medicine",
+    "image": "",
+    "researchFocus": "Cancer Biology\nCanine Cancer Model\nOsteosarcom",
+    "education": [
+      "MS, Sylhet Agricultural University, Bangladesh, 2024"
+    ],
+    "email": "lubaba.1@buckeyemail.osu.edu",
+    "phone": "",
+    "address": "1900 Coffey Road, Columbus, Ohio 43210",
+    "isPrincipalInvestigator": false,
+    "id": "umme-lubaba"
   }
 ]

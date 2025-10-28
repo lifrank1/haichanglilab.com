@@ -15,20 +15,5 @@
     "phone": "614-247-5703",
     "address": "1900 Coffey Road, Columbus, OH 43210",
     "isPrincipalInvestigator": true
-  },
-  {
-    "name": "Zhongguang  Li ",
-    "title": "Dr.",
-    "affiliation": "Department of Veterinary Biosciences",
-    "image": "/Users/li.3714/Desktop/zhonguang.jpg",
-    "researchFocus": "Cancer biology,\nTissue Repair \nWound Healing",
-    "education": [
-      "PhD"
-    ],
-    "email": "li.10025@osu.edu",
-    "phone": "614-292-4110",
-    "address": "1900 Coffey Road, Columbus, Ohio 43210",
-    "isPrincipalInvestigator": false,
-    "id": "zhongguang-li-"
   }
 ]

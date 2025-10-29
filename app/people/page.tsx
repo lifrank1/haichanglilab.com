@@ -9,14 +9,15 @@ interface PersonCardProps {
   person: Person;
 }
 
-function PersonCard({ person }: PersonCardProps) {
+// Large card for Principal Investigator
+function PrincipalInvestigatorCard({ person }: PersonCardProps) {
   return (
-    <div className="rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 animate-fade-in-up">
       <div className="lg:flex">
         <div className="lg:w-2/5 p-8 animate-fade-in-left">
           <div className="relative mb-6 flex justify-center">
             <Image
-              src={person.image}
+              src={person.image || '/headshots/headshot0.png'}
               alt={person.name}
               width={400}
               height={400}
@@ -25,21 +26,25 @@ function PersonCard({ person }: PersonCardProps) {
           </div>
           
           {/* Contact Information */}
-          <div className="rounded-lg p-6">
+          <div className="bg-gray-50 rounded-xl p-6">
             <h4 className="text-lg font-bold mb-4" style={{ color: '#ba0d2f' }}>Contact Information</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                <p className="text-gray-700 font-medium">{person.email}</p>
+                <p className="text-gray-700 font-medium text-sm break-all">{person.email}</p>
               </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                <p className="text-gray-700 font-medium">{person.phone}</p>
-              </div>
-              <div className="flex items-center space-x-3">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                <p className="text-gray-700 font-medium">{person.address}</p>
-              </div>
+              {person.phone && (
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
+                  <p className="text-gray-700 font-medium text-sm">{person.phone}</p>
+                </div>
+              )}
+              {person.address && (
+                <div className="flex items-center space-x-3">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
+                  <p className="text-gray-700 font-medium text-sm">{person.address}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -61,15 +66,84 @@ function PersonCard({ person }: PersonCardProps) {
           
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Education</h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="space-y-2">
               {person.education.map((degree, index) => (
-                <div key={index} className="p-3 rounded-lg hover:shadow-md transition-all duration-200">
+                <div key={index} className="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200">
                   <p className="text-gray-700 font-medium text-sm">{degree}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// Compact card for team members
+function TeamMemberCard({ person }: PersonCardProps) {
+  return (
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+      <div className="p-6">
+        {/* Image and basic info */}
+        <div className="flex items-start space-x-4 mb-4">
+          <div className="flex-shrink-0">
+            <Image
+              src={person.image || '/headshots/headshot0.png'}
+              alt={person.name}
+              width={80}
+              height={80}
+              className="w-20 h-20 rounded-full object-cover border-2 border-gray-200"
+            />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="text-lg font-bold text-gray-900 mb-1 group-hover:text-red-600 transition-colors duration-200">
+              {person.name}
+            </h3>
+            <p className="text-sm font-semibold mb-2" style={{ color: '#ba0d2f' }}>
+              {person.title}
+            </p>
+            <p className="text-xs text-gray-600 leading-tight">
+              {person.affiliation}
+            </p>
+          </div>
+        </div>
+
+        {/* Research Focus */}
+        <div className="mb-4">
+          <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Research Focus</h4>
+          <p className="text-xs text-gray-700 leading-relaxed line-clamp-3">
+            {person.researchFocus}
+          </p>
+        </div>
+
+        {/* Contact Info */}
+        <div className="mb-4">
+          <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Contact</h4>
+          <div className="space-y-1">
+            <p className="text-xs text-gray-600 break-all">{person.email}</p>
+            {person.phone && (
+              <p className="text-xs text-gray-600">{person.phone}</p>
+            )}
+          </div>
+        </div>
+
+        {/* Education */}
+        {person.education && person.education.length > 0 && (
+          <div>
+            <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Education</h4>
+            <div className="space-y-1">
+              {person.education.slice(0, 2).map((degree, index) => (
+                <p key={index} className="text-xs text-gray-600 line-clamp-1">
+                  {degree}
+                </p>
+              ))}
+              {person.education.length > 2 && (
+                <p className="text-xs text-gray-500">+{person.education.length - 2} more</p>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -90,9 +164,9 @@ export default function People() {
               <div className="w-24 h-1 mx-auto mt-4" style={{ backgroundColor: '#ba0d2f' }}></div>
             </div>
             
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               {principalInvestigators.map((person) => (
-                <PersonCard key={person.id} person={person} />
+                <PrincipalInvestigatorCard key={person.id} person={person} />
               ))}
             </div>
           </div>
@@ -108,43 +182,16 @@ export default function People() {
               <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamMembers.map((person) => (
-                <div key={person.id} className="animate-fade-in-up">
-                  <PersonCard person={person} />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {teamMembers.map((person, index) => (
+                <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <TeamMemberCard person={person} />
                 </div>
               ))}
             </div>
           </div>
         </section>
       )}
-
-      {/* Join Our Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Join Our Team</h2>
-            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We are always looking for talented researchers to join our team. 
-              If you are interested in our research areas, please contact Dr. Li.
-            </p>
-          </div>
-          
-          {/* Placeholder for future team members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 border border-gray-100 animate-scale-in">
-              <div className="w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center animate-subtle-pulse" style={{ backgroundColor: '#ba0d2f' }}>
-                <span className="text-white text-3xl font-bold">+</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Join Our Team</h3>
-              <p className="text-gray-600">
-                We welcome graduate students, postdocs, and research associates.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Lab Gallery Section */}
       <section className="py-20">

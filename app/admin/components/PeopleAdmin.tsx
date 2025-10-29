@@ -383,10 +383,10 @@ export default function PeopleAdmin() {
                     <div className="flex-shrink-0 h-10 w-10">
                       <img
                         className="h-10 w-10 rounded-full object-cover"
-                        src={person.image || '/headshots/headshot0.png'}
+                        src={person.image || '/headshots/noheadshot.png'}
                         alt={person.name}
                         onError={(e) => {
-                          (e.target as HTMLImageElement).src = '/headshots/headshot0.png';
+                          (e.target as HTMLImageElement).src = '/headshots/noheadshot.png';
                         }}
                       />
                     </div>
@@ -590,7 +590,7 @@ export default function PeopleAdmin() {
                         name="image"
                         value={formData.image}
                         onChange={handleInputChange}
-                        placeholder="/peopleheadshots/filename.jpg"
+                        placeholder="/peopleheadshots/filename.jpg (or leave empty for default)"
                         className="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
                       />
                     </div>

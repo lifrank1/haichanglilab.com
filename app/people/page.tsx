@@ -17,7 +17,7 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
         <div className="lg:w-2/5 p-8 animate-fade-in-left">
           <div className="relative mb-6 flex justify-center">
             <Image
-              src={person.image || '/headshots/headshot0.png'}
+              src={person.image || '/headshots/noheadshot.png'}
               alt={person.name}
               width={400}
               height={400}
@@ -89,7 +89,7 @@ function TeamMemberCard({ person }: PersonCardProps) {
         <div className="flex items-start space-x-4 mb-4">
           <div className="flex-shrink-0">
             <Image
-              src={person.image || '/headshots/headshot0.png'}
+              src={person.image || '/headshots/noheadshot.png'}
               alt={person.name}
               width={80}
               height={80}

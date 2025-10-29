@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Person } from '../../../data/types';
-import { updateFile, validatePAT } from '../../../lib/github';
+import { updateFile, uploadFile, validatePAT } from '../../../lib/github';
 
 export default function PeopleAdmin() {
   const [people, setPeople] = useState<Person[]>([]);
@@ -13,6 +13,9 @@ export default function PeopleAdmin() {
   const [pat, setPat] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [isDragOver, setIsDragOver] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Form state
   const [formData, setFormData] = useState<Partial<Person>>({
@@ -75,13 +78,54 @@ export default function PeopleAdmin() {
     }));
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = (file: File) => {
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      setMessage({ type: 'error', text: 'Please select an image file' });
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      setMessage({ type: 'error', text: 'File size must be less than 5MB' });
+      return;
+    }
+
+    setSelectedFile(file);
+    setMessage(null);
+  };
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // For now, we'll just set the filename. In a real implementation,
-      // you'd upload the file to a server or cloud storage
-      const fileName = `/peopleheadshots/${file.name}`;
-      setFormData(prev => ({ ...prev, image: fileName }));
+      handleFileSelect(file);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragOver(false);
+    
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      handleFileSelect(file);
+    }
+  };
+
+  const removeSelectedFile = () => {
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
     }
   };
 
@@ -108,11 +152,49 @@ export default function PeopleAdmin() {
         return;
       }
 
+      let imagePath = formData.image || '';
+
+      // Handle file upload if a file is selected
+      if (selectedFile) {
+        const fileName = `${generateId(formData.name || '')}-${Date.now()}.${selectedFile.name.split('.').pop()}`;
+        const filePath = `public/peopleheadshots/${fileName}`;
+        
+        // Convert file to base64
+        const base64Content = await new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = reader.result as string;
+            // Remove the data:image/...;base64, prefix
+            const base64 = result.split(',')[1];
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(selectedFile);
+        });
+
+        // Upload file to GitHub
+        const uploadResult = await uploadFile(
+          pat,
+          filePath,
+          base64Content,
+          `Add headshot for ${formData.name}`
+        );
+
+        if (!uploadResult.success) {
+          setMessage({ type: 'error', text: `Failed to upload image: ${uploadResult.message}` });
+          setIsSubmitting(false);
+          return;
+        }
+
+        imagePath = `/peopleheadshots/${fileName}`;
+      }
+
       // Generate ID if new person
       const newPerson: Person = {
         ...formData as Person,
         id: editingPerson?.id || generateId(formData.name || ''),
         education: formData.education?.filter(edu => edu.trim() !== '') || [],
+        image: imagePath,
       };
 
       // Update people array
@@ -144,6 +226,7 @@ export default function PeopleAdmin() {
         resetForm();
         setShowPATModal(false);
         setPat('');
+        setSelectedFile(null);
       } else {
         setMessage({ type: 'error', text: result.message });
       }
@@ -234,6 +317,10 @@ export default function PeopleAdmin() {
     });
     setEditingPerson(null);
     setShowForm(false);
+    setSelectedFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const generateId = (name: string): string => {
@@ -418,16 +505,95 @@ export default function PeopleAdmin() {
                     />
                   </div>
                   
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Image Path</label>
-                    <input
-                      type="text"
-                      name="image"
-                      value={formData.image}
-                      onChange={handleInputChange}
-                      placeholder="/peopleheadshots/filename.jpg"
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                    />
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Headshot Image</label>
+                    
+                    {/* Drag and Drop Area */}
+                    <div
+                      className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors duration-200 ${
+                        isDragOver
+                          ? 'border-red-400 bg-red-50'
+                          : 'border-gray-300 hover:border-gray-400'
+                      }`}
+                      onDragOver={handleDragOver}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDrop}
+                    >
+                      {selectedFile ? (
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-center">
+                            <img
+                              src={URL.createObjectURL(selectedFile)}
+                              alt="Preview"
+                              className="h-20 w-20 rounded-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-gray-900">{selectedFile.name}</p>
+                            <p className="text-xs text-gray-500">
+                              {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={removeSelectedFile}
+                            className="text-sm text-red-600 hover:text-red-800"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="space-y-2">
+                          <svg
+                            className="mx-auto h-12 w-12 text-gray-400"
+                            stroke="currentColor"
+                            fill="none"
+                            viewBox="0 0 48 48"
+                          >
+                            <path
+                              d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                              strokeWidth={2}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <div className="text-sm text-gray-600">
+                            <label
+                              htmlFor="file-upload"
+                              className="relative cursor-pointer bg-white rounded-md font-medium text-red-600 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
+                            >
+                              <span>Upload a file</span>
+                              <input
+                                ref={fileInputRef}
+                                id="file-upload"
+                                name="file-upload"
+                                type="file"
+                                className="sr-only"
+                                accept="image/*"
+                                onChange={handleFileInputChange}
+                              />
+                            </label>
+                            <p className="pl-1">or drag and drop</p>
+                          </div>
+                          <p className="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Manual Image Path Input (for existing images) */}
+                    <div className="mt-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Or enter image path manually
+                      </label>
+                      <input
+                        type="text"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleInputChange}
+                        placeholder="/peopleheadshots/filename.jpg"
+                        className="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
+                      />
+                    </div>
                   </div>
                   
                   <div className="flex items-center">

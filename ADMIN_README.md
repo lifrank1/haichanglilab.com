@@ -31,6 +31,13 @@ This admin panel allows you to manage publications, people, and research project
    - The PAT should have `repo` scope permissions
    - The PAT is only used for that specific operation and is not stored
 
+4. **Image Upload (People)**
+   - Drag and drop headshot images directly onto the upload area
+   - Or click "Upload a file" to select from your computer
+   - Supported formats: PNG, JPG, GIF (up to 5MB)
+   - Images are automatically uploaded to GitHub and stored in `public/peopleheadshots/`
+   - Files are named with person ID and timestamp to avoid conflicts
+
 ## GitHub PAT Setup
 
 1. Go to GitHub Settings > Developer settings > Personal access tokens

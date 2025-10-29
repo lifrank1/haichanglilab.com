@@ -134,6 +134,54 @@ export async function validatePAT(pat: string): Promise<boolean> {
 }
 
 /**
+ * Upload a file to the repository
+ */
+export async function uploadFile(
+  pat: string,
+  filePath: string,
+  fileContent: string, // Base64 encoded content
+  message: string
+): Promise<GitHubCommitResponse> {
+  try {
+    const response = await fetch(
+      `${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${pat}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message,
+          content: fileContent, // Already base64 encoded
+          branch: 'main',
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`GitHub API Error (${response.status}):`, errorText);
+      throw new Error(`Failed to upload file: ${response.status} ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return {
+      success: true,
+      message: 'File uploaded successfully',
+      commitSha: data.commit.sha,
+    };
+  } catch (error) {
+    console.error('Error uploading file:', error);
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Unknown error occurred',
+    };
+  }
+}
+
+/**
  * Get repository information
  */
 export async function getRepositoryInfo(pat: string) {

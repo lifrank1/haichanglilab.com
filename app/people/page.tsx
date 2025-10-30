@@ -1,6 +1,6 @@
 import Image from "next/image";
 import peopleData from "../../data/people.json";
-import { Person } from "../../data/types";
+import { Person, EducationEntry } from "../../data/types";
 
 // Type assertion to ensure proper typing
 const people: Person[] = peopleData as Person[];
@@ -33,18 +33,7 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
                 <p className="text-gray-700 font-medium text-sm break-all">{person.email}</p>
               </div>
-              {person.phone && (
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                  <p className="text-gray-700 font-medium text-sm">{person.phone}</p>
-                </div>
-              )}
-              {person.address && (
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                  <p className="text-gray-700 font-medium text-sm">{person.address}</p>
-                </div>
-              )}
+              {/* phone/address removed in new schema */}
             </div>
           </div>
         </div>
@@ -67,9 +56,9 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="space-y-2">
-              {person.education.map((degree, index) => (
+              {(person.education as EducationEntry[]).map((edu, index) => (
                 <div key={index} className="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200">
-                  <p className="text-gray-700 font-medium text-sm">{degree}</p>
+                  <p className="text-gray-700 font-medium text-sm">{`${edu.degree ? edu.degree + ' — ' : ''}${edu.fieldOfStudy ? edu.fieldOfStudy + ', ' : ''}${edu.school}`}</p>
                 </div>
               ))}
             </div>
@@ -122,21 +111,16 @@ function TeamMemberCard({ person }: PersonCardProps) {
           <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Contact</h4>
           <div className="space-y-1">
             <p className="text-xs text-gray-600 break-all">{person.email}</p>
-            {person.phone && (
-              <p className="text-xs text-gray-600">{person.phone}</p>
-            )}
           </div>
         </div>
 
         {/* Education */}
-        {person.education && person.education.length > 0 && (
+            {person.education && person.education.length > 0 && (
           <div>
             <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="space-y-1">
-              {person.education.slice(0, 2).map((degree, index) => (
-                <p key={index} className="text-xs text-gray-600 line-clamp-1">
-                  {degree}
-                </p>
+                  {(person.education as EducationEntry[]).slice(0, 2).map((edu, index) => (
+                    <p key={index} className="text-xs text-gray-600 line-clamp-1">{`${edu.degree ? edu.degree + ' — ' : ''}${edu.fieldOfStudy ? edu.fieldOfStudy + ', ' : ''}${edu.school}`}</p>
               ))}
               {person.education.length > 2 && (
                 <p className="text-xs text-gray-500">+{person.education.length - 2} more</p>
@@ -150,8 +134,9 @@ function TeamMemberCard({ person }: PersonCardProps) {
 }
 
 export default function People() {
-  const principalInvestigators = people.filter(person => person.isPrincipalInvestigator);
-  const teamMembers = people.filter(person => !person.isPrincipalInvestigator);
+  const principalInvestigators = people.filter(person => person.isPrincipalInvestigator && (person.status ?? 'current') !== 'alumni');
+  const currentMembers = people.filter(person => !person.isPrincipalInvestigator && (person.status ?? 'current') === 'current');
+  const alumniMembers = people.filter(person => (person.status ?? 'current') === 'alumni');
 
   return (
     <div>
@@ -173,17 +158,36 @@ export default function People() {
         </section>
       )}
 
-      {/* Research Team */}
-      {teamMembers.length > 0 && (
+      {/* Current Members */}
+      {currentMembers.length > 0 && (
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Research Team</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Current Members</h2>
               <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {teamMembers.map((person, index) => (
+              {currentMembers.map((person, index) => (
+                <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <TeamMemberCard person={person} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Lab Alumni */}
+      {alumniMembers.length > 0 && (
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Lab Alumni</h2>
+              <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {alumniMembers.map((person, index) => (
                 <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
                   <TeamMemberCard person={person} />
                 </div>

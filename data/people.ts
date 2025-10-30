@@ -1,3 +1,9 @@
+export interface EducationEntry {
+  degree: string;
+  fieldOfStudy: string;
+  school: string;
+}
+
 export interface Person {
   id: string;
   name: string;
@@ -5,11 +11,10 @@ export interface Person {
   affiliation: string;
   image: string;
   researchFocus: string;
-  education: string[];
+  education: EducationEntry[];
   email: string;
-  phone: string;
-  address: string;
   isPrincipalInvestigator?: boolean;
+  status?: 'current' | 'alumni';
 }
 
 export const people: Person[] = [
@@ -21,14 +26,13 @@ export const people: Person[] = [
     image: "/headshots/headshot1.png",
     researchFocus: "Dr. Li's research focuses on cell membrane repair mechanisms, particularly the MG53 protein, and its applications in regenerative medicine, cancer biology, and therapeutic protein development. His work spans from basic molecular mechanisms to translational applications, with significant contributions to understanding tissue repair, wound healing, and tumor suppression.",
     education: [
-      "PhD, Molecular Biology and Genetics, Gifu University, Japan",
-      "MS, Physiology and Biochemistry, Beijing Agricultural University, China",
-      "BA, Veterinary Science, Henan Agricultural University, China"
+      { degree: "PhD", fieldOfStudy: "Molecular Biology and Genetics", school: "Gifu University, Japan" },
+      { degree: "MS", fieldOfStudy: "Physiology and Biochemistry", school: "Beijing Agricultural University, China" },
+      { degree: "BA", fieldOfStudy: "Veterinary Science", school: "Henan Agricultural University, China" }
     ],
     email: "li.3714@osu.edu",
-    phone: "614-247-5703",
-    address: "1900 Coffey Road, Columbus, OH 43210",
-    isPrincipalInvestigator: true
+    isPrincipalInvestigator: true,
+    status: 'current'
   }
   // To add more team members, simply add new Person objects here:
   // {

@@ -16,6 +16,26 @@ export interface GitHubFileContent {
   sha: string;
 }
 
+function encodeBase64Utf8(input: string): string {
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(input);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
+function decodeBase64Utf8(b64: string): string {
+  const binary = atob(b64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  const decoder = new TextDecoder();
+  return decoder.decode(bytes);
+}
+
 /**
  * Get the current content of a file from the repository
  */
@@ -42,7 +62,7 @@ export async function getFileContent(
 
     const data = await response.json();
     return {
-      content: atob(data.content), // Decode base64 content
+      content: decodeBase64Utf8(data.content), // Decode base64 content (UTF-8 safe)
       sha: data.sha,
     };
   } catch (error) {
@@ -86,7 +106,7 @@ export async function updateFile(
         },
         body: JSON.stringify({
           message,
-          content: btoa(content), // Encode content to base64
+          content: encodeBase64Utf8(content), // Encode content to base64 (UTF-8 safe)
           sha,
           branch: 'main', // Specify the branch
         }),

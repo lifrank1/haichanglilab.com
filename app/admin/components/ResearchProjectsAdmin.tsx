@@ -13,6 +13,7 @@ export default function ResearchProjectsAdmin() {
   const [pat, setPat] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [patAction, setPatAction] = useState<'save' | 'delete' | null>(null);
 
   // Form state
   const [formData, setFormData] = useState<Partial<ResearchProject>>({
@@ -94,6 +95,7 @@ export default function ResearchProjectsAdmin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPatAction('save');
     setShowPATModal(true);
   };
 
@@ -177,9 +179,9 @@ export default function ResearchProjectsAdmin() {
     if (!confirm(`Are you sure you want to delete "${project.title}"?`)) {
       return;
     }
-
-    setShowPATModal(true);
     setEditingProject(project);
+    setPatAction('delete');
+    setShowPATModal(true);
   };
 
   const handleDeleteConfirm = async () => {
@@ -471,7 +473,7 @@ export default function ResearchProjectsAdmin() {
                 GitHub Authentication Required
               </h3>
               <p className="text-sm text-gray-600 mb-4">
-                Enter your GitHub Personal Access Token to {editingProject ? 'delete' : 'save'} this research project.
+                Enter your GitHub Personal Access Token to {patAction === 'delete' ? 'delete' : 'save'} this research project.
               </p>
               
               <div className="mb-4">
@@ -492,7 +494,7 @@ export default function ResearchProjectsAdmin() {
                   onClick={() => {
                     setShowPATModal(false);
                     setPat('');
-                    setEditingProject(null);
+                    setPatAction(null);
                   }}
                   className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
                   disabled={isSubmitting}
@@ -500,11 +502,11 @@ export default function ResearchProjectsAdmin() {
                   Cancel
                 </button>
                 <button
-                  onClick={editingProject ? handleDeleteConfirm : handlePATSubmit}
+                  onClick={patAction === 'delete' ? handleDeleteConfirm : handlePATSubmit}
                   disabled={isSubmitting}
                   className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Processing...' : (editingProject ? 'Delete' : 'Save')}
+                  {isSubmitting ? 'Processing...' : (patAction === 'delete' ? 'Delete' : 'Save')}
                 </button>
               </div>
             </div>

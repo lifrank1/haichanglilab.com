@@ -144,5 +144,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": true,
     "id": "jessica-pezzullo-"
+  },
+  {
+    "name": "Isabella Melians",
+    "title": "Research Volunteer",
+    "image": "",
+    "researchFocus": "Neuroscience, Regenerative Medicine, Wound Healing",
+    "education": [
+      {
+        "degree": "Bachelors",
+        "school": "The Ohio State University",
+        "fieldOfStudy": "Neuroscience"
+      }
+    ],
+    "email": "melians.1@osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": true,
+    "id": "isabella-melians"
   }
 ]

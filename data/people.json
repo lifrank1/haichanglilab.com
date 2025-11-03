@@ -178,5 +178,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": true,
     "id": "xinyi-wendy-li"
+  },
+  {
+    "name": "Changhan Zhao",
+    "title": "Research Volunteer",
+    "image": "/peopleheadshots/changhan-zhao-1762199064448.jpg",
+    "researchFocus": "Molecular Biology,  Biochemistry, Cancer Biology",
+    "education": [
+      {
+        "degree": "",
+        "school": "The Ohio State University",
+        "fieldOfStudy": "Biology"
+      }
+    ],
+    "email": "zhao.3937@buckeyemail.osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "changhan-zhao"
   }
 ]

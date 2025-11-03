@@ -233,7 +233,7 @@ export default function PublicationsAdmin() {
 
       {/* Publications List */}
       <div className="bg-white shadow rounded-lg overflow-hidden">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full table-auto divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -256,12 +256,12 @@ export default function PublicationsAdmin() {
           <tbody className="bg-white divide-y divide-gray-200">
             {publications.map((publication) => (
               <tr key={publication.id}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900 max-w-xs truncate">
+                <td className="px-6 py-4 align-top">
+                  <div className="text-sm font-medium text-gray-900 max-w-2xl whitespace-normal break-words">
                     {publication.title}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 align-top text-sm text-gray-500 whitespace-normal break-words max-w-lg">
                   {publication.journal}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

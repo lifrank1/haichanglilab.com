@@ -127,5 +127,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": false,
     "id": "matthew-bu"
+  },
+  {
+    "name": "Jessica Pezzullo ",
+    "title": "Research Volunteer",
+    "image": "/peopleheadshots/jessica-pezzullo--1762198077462.jpg",
+    "researchFocus": "Skin Wound healing, Tissue Repair, Regenerative Medicine.",
+    "education": [
+      {
+        "degree": "Bachelors",
+        "school": "The Ohio State University",
+        "fieldOfStudy": "Biology"
+      }
+    ],
+    "email": "jessdipezz@gmail.com",
+    "isPrincipalInvestigator": false,
+    "isAlumni": true,
+    "id": "jessica-pezzullo-"
   }
 ]

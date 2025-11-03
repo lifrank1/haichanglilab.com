@@ -76,5 +76,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": false,
     "id": "maliha-mahzabin"
+  },
+  {
+    "name": "Fei Jiang",
+    "title": "Postdoc (Former)",
+    "image": "/peopleheadshots/fei-jiang-1762197239005.jpg",
+    "researchFocus": "Cancer Biology, Regenerative Medicine, Oncolytic Virotherapy",
+    "education": [
+      {
+        "degree": "PhD",
+        "school": "Southeast University, China",
+        "fieldOfStudy": "Epidemiology and Health Statistics"
+      }
+    ],
+    "email": "jiang.2886@osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "fei-jiang"
   }
 ]

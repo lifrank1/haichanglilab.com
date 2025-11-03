@@ -110,5 +110,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": false,
     "id": "ellica-leong"
+  },
+  {
+    "name": "Matthew Bu",
+    "title": "Research Assistant",
+    "image": "/peopleheadshots/matthew-bu-1762197754621.jpg",
+    "researchFocus": "Lung cancer, Oncolytic Virotherapy",
+    "education": [
+      {
+        "degree": "Bachelors",
+        "school": "The Ohio State University",
+        "fieldOfStudy": " Biology"
+      }
+    ],
+    "email": "Matthew.bu@osumc.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "matthew-bu"
   }
 ]

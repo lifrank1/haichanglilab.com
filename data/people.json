@@ -51,7 +51,7 @@
     "education": [
       {
         "degree": "Masters",
-        "school": "Sylhet Agricultural University",
+        "school": "DMV, Sylhet Agricultural University",
         "fieldOfStudy": ""
       }
     ],
@@ -61,20 +61,20 @@
     "id": "umme-lubaba"
   },
   {
-    "name": "Fei Jiang",
-    "title": "Postdoc (Former)",
-    "image": "/peopleheadshots/fei-jiang-1762196779258.jpg",
-    "researchFocus": "Melanoma, Tissue repair, Regenerative Medicine, Oncolytic Virotherapy",
+    "name": "Maliha Mahzabin",
+    "title": "Research Assistant",
+    "image": "/peopleheadshots/maliha-mahzabin-1762197073801.jpg",
+    "researchFocus": "Cancer biology, Oncolytic Virotherapy",
     "education": [
       {
-        "degree": "PhD",
-        "school": "Southeast University",
-        "fieldOfStudy": "Epidemiology and Statistics"
+        "degree": "Bachelors",
+        "school": "Brac University, Dhaka, Bangladesh. ",
+        "fieldOfStudy": ""
       }
     ],
-    "email": "jiang.2886@osu.edu",
+    "email": "malihay6k@gmail.com",
     "isPrincipalInvestigator": false,
-    "isAlumni": true,
-    "id": "fei-jiang"
+    "isAlumni": false,
+    "id": "maliha-mahzabin"
   }
 ]

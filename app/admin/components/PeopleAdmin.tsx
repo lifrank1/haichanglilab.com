@@ -16,6 +16,7 @@ export default function PeopleAdmin() {
   const [isDragOver, setIsDragOver] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [patAction, setPatAction] = useState<'save' | 'delete' | null>(null);
 
   // Form state
   const [formData, setFormData] = useState<Partial<Person>>({
@@ -131,6 +132,7 @@ export default function PeopleAdmin() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPatAction('save');
     setShowPATModal(true);
   };
 
@@ -253,9 +255,9 @@ export default function PeopleAdmin() {
     if (!confirm(`Are you sure you want to delete "${person.name}"?`)) {
       return;
     }
-
-    setShowPATModal(true);
     setEditingPerson(person);
+    setPatAction('delete');
+    setShowPATModal(true);
   };
 
   const handleDeleteConfirm = async () => {
@@ -676,7 +678,7 @@ export default function PeopleAdmin() {
                 GitHub Authentication Required
               </h3>
               <p className="text-sm text-gray-600 mb-4">
-                Enter your GitHub Personal Access Token to {editingPerson ? 'delete' : 'save'} this person.
+                Enter your GitHub Personal Access Token to {patAction === 'delete' ? 'delete' : 'save'} this person.
               </p>
               
               <div className="mb-4">
@@ -697,7 +699,7 @@ export default function PeopleAdmin() {
                   onClick={() => {
                     setShowPATModal(false);
                     setPat('');
-                    setEditingPerson(null);
+                    setPatAction(null);
                   }}
                   className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
                   disabled={isSubmitting}
@@ -705,11 +707,11 @@ export default function PeopleAdmin() {
                   Cancel
                 </button>
                 <button
-                  onClick={editingPerson ? handleDeleteConfirm : handlePATSubmit}
+                  onClick={patAction === 'delete' ? handleDeleteConfirm : handlePATSubmit}
                   disabled={isSubmitting}
                   className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50"
                 >
-                  {isSubmitting ? 'Processing...' : (editingPerson ? 'Delete' : 'Save')}
+                  {isSubmitting ? 'Processing...' : (patAction === 'delete' ? 'Delete' : 'Save')}
                 </button>
               </div>
             </div>

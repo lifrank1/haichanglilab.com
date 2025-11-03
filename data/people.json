@@ -93,5 +93,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": false,
     "id": "fei-jiang"
+  },
+  {
+    "name": "Ellica Leong",
+    "title": "Research Assistant ",
+    "image": "/peopleheadshots/ellica-leong-1762197522353.jpg",
+    "researchFocus": "Tissue Repair, Regenerative Medicine, Wound Healing, Cancer Biology",
+    "education": [
+      {
+        "degree": "Bachelors",
+        "school": "The Ohio State University ",
+        "fieldOfStudy": "Biology"
+      }
+    ],
+    "email": "leong.76@osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "ellica-leong"
   }
 ]

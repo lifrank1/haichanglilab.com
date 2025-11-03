@@ -3,60 +3,72 @@
     "id": "haichang-li",
     "name": "Dr. Haichang Li",
     "title": "Assistant Professor",
-    "affiliation": "The Ohio State University College of Veterinary Medicine",
     "image": "/headshots/headshot1.png",
     "researchFocus": "Dr. Li's research focuses on cell membrane repair mechanisms, particularly the MG53 protein, and its applications in regenerative medicine, cancer biology, and therapeutic protein development. His work spans from basic molecular mechanisms to translational applications, with significant contributions to understanding tissue repair, wound healing, and tumor suppression.",
     "education": [
-      "PhD, Molecular Biology and Genetics, Gifu University, Japan",
-      "MS, Physiology and Biochemistry, Beijing Agricultural University, China",
-      "BA, Veterinary Science, Henan Agricultural University, China"
+      {
+        "degree": "PhD",
+        "school": "Gifu University",
+        "fieldOfStudy": "Molecular Biology and Genetics"
+      },
+      {
+        "degree": "Masters",
+        "school": "Beijing Agricultural University",
+        "fieldOfStudy": "Physiology and Biochemistry"
+      },
+      {
+        "degree": "Bachelors",
+        "school": "Henan Agricultural University",
+        "fieldOfStudy": "Veterinary Science"
+      }
     ],
     "email": "li.3714@osu.edu",
-    "phone": "614-247-5703",
-    "address": "1900 Coffey Road, Columbus, OH 43210",
-    "isPrincipalInvestigator": true
+    "isPrincipalInvestigator": true,
+    "isAlumni": false
   },
   {
+    "id": "umme-lubaba",
     "name": "Umme Lubaba",
     "title": "Graduate Research Assistant",
-    "affiliation": "The Ohio State University College of Veterinary Medicine",
     "image": "",
     "researchFocus": "Cancer Biology\nCanine Cancer Model\nOsteosarcom",
     "education": [
-      "MS, Sylhet Agricultural University, Bangladesh, 2024"
+      {
+        "degree": "Masters",
+        "school": "Sylhet Agricultural University",
+        "fieldOfStudy": ""
+      }
     ],
     "email": "lubaba.1@buckeyemail.osu.edu",
-    "phone": "",
-    "address": "1900 Coffey Road, Columbus, Ohio 43210",
     "isPrincipalInvestigator": false,
-    "id": "umme-lubaba"
+    "isAlumni": false
   },
   {
+    "id": "zhongguang-li",
     "name": "Zhongguang Li",
     "title": "Postdoc",
-    "affiliation": "The Ohio State University College of Veterinary Medicine",
     "image": "",
     "researchFocus": "Tissue Repari\nWound healing\nCancer Biology",
     "education": [
-      "PhD, Shaanxi Normal University College of Life Sciences, 2023"
+      {
+        "degree": "PhD",
+        "school": "Shaanxi Normal University College of Life Sciences",
+        "fieldOfStudy": ""
+      }
     ],
     "email": "li.10025@osu.edu",
-    "phone": "614-292-411",
-    "address": "1900 Coffey Road, Columbus, Ohio 43210",
     "isPrincipalInvestigator": false,
-    "id": "zhongguang-li"
+    "isAlumni": false
   },
   {
+    "id": "fdsa",
     "name": "fdsa",
     "title": "fdas",
-    "affiliation": "fdas",
     "image": "/peopleheadshots/fdsa-1761706973879.png",
     "researchFocus": "fdasfdas",
     "education": [],
     "email": "fdsa@dafa.com",
-    "phone": "",
-    "address": "",
     "isPrincipalInvestigator": false,
-    "id": "fdsa"
+    "isAlumni": false
   }
 ]

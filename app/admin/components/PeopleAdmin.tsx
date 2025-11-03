@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Person } from '../../../data/types';
+import { Person, EducationEntry } from '../../../data/types';
 import { updateFile, uploadFile, validatePAT } from '../../../lib/github';
 
 export default function PeopleAdmin() {
@@ -21,14 +21,12 @@ export default function PeopleAdmin() {
   const [formData, setFormData] = useState<Partial<Person>>({
     name: '',
     title: '',
-    affiliation: '',
     image: '',
     researchFocus: '',
-    education: [''],
+    education: [{ degree: '', school: '', fieldOfStudy: '' }],
     email: '',
-    phone: '',
-    address: '',
     isPrincipalInvestigator: false,
+    isAlumni: false,
   });
 
   // Load people data
@@ -57,24 +55,26 @@ export default function PeopleAdmin() {
     }));
   };
 
-  const handleEducationChange = (index: number, value: string) => {
+  const handleEducationChange = (index: number, field: keyof EducationEntry, value: string) => {
     setFormData(prev => ({
       ...prev,
-      education: prev.education?.map((edu, i) => i === index ? value : edu) || ['']
+      education: prev.education?.map((edu, i) => 
+        i === index ? { ...edu, [field]: value } : edu
+      ) || [{ degree: '', school: '', fieldOfStudy: '' }]
     }));
   };
 
   const addEducationField = () => {
     setFormData(prev => ({
       ...prev,
-      education: [...(prev.education || []), '']
+      education: [...(prev.education || []), { degree: '', school: '', fieldOfStudy: '' }]
     }));
   };
 
   const removeEducationField = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      education: prev.education?.filter((_, i) => i !== index) || ['']
+      education: prev.education?.filter((_, i) => i !== index) || [{ degree: '', school: '', fieldOfStudy: '' }]
     }));
   };
 
@@ -193,7 +193,9 @@ export default function PeopleAdmin() {
       const newPerson: Person = {
         ...formData as Person,
         id: editingPerson?.id || generateId(formData.name || ''),
-        education: formData.education?.filter(edu => edu.trim() !== '') || [],
+        education: formData.education?.filter(edu => 
+          edu.degree.trim() !== '' || edu.school.trim() !== '' || edu.fieldOfStudy.trim() !== ''
+        ) || [],
         image: imagePath,
       };
 
@@ -242,7 +244,7 @@ export default function PeopleAdmin() {
     setEditingPerson(person);
     setFormData({
       ...person,
-      education: person.education.length > 0 ? person.education : ['']
+      education: person.education.length > 0 ? person.education : [{ degree: '', school: '', fieldOfStudy: '' }]
     });
     setShowForm(true);
   };
@@ -306,14 +308,12 @@ export default function PeopleAdmin() {
     setFormData({
       name: '',
       title: '',
-      affiliation: '',
       image: '',
       researchFocus: '',
-      education: [''],
+      education: [{ degree: '', school: '', fieldOfStudy: '' }],
       email: '',
-      phone: '',
-      address: '',
       isPrincipalInvestigator: false,
+      isAlumni: false,
     });
     setEditingPerson(null);
     setShowForm(false);
@@ -365,10 +365,10 @@ export default function PeopleAdmin() {
                 Title
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Affiliation
+                PI
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                PI
+                Alumni
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Actions
@@ -398,11 +398,11 @@ export default function PeopleAdmin() {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {person.title}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 max-w-xs truncate">
-                  {person.affiliation}
-                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {person.isPrincipalInvestigator ? 'Yes' : 'No'}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {person.isAlumni ? 'Yes' : 'No'}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                   <button
@@ -459,18 +459,6 @@ export default function PeopleAdmin() {
                     />
                   </div>
                   
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700">Affiliation *</label>
-                    <input
-                      type="text"
-                      name="affiliation"
-                      required
-                      value={formData.affiliation}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                    />
-                  </div>
-                  
                   <div>
                     <label className="block text-sm font-medium text-gray-700">Email *</label>
                     <input
@@ -478,28 +466,6 @@ export default function PeopleAdmin() {
                       name="email"
                       required
                       value={formData.email}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Phone</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                    />
-                  </div>
-                  
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700">Address</label>
-                    <input
-                      type="text"
-                      name="address"
-                      value={formData.address}
                       onChange={handleInputChange}
                       className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
                     />
@@ -579,21 +545,6 @@ export default function PeopleAdmin() {
                         </div>
                       )}
                     </div>
-                    
-                    {/* Manual Image Path Input (for existing images) */}
-                    <div className="mt-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Or enter image path manually
-                      </label>
-                      <input
-                        type="text"
-                        name="image"
-                        value={formData.image}
-                        onChange={handleInputChange}
-                        placeholder="/peopleheadshots/filename.jpg (or leave empty for default)"
-                        className="block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                      />
-                    </div>
                   </div>
                   
                   <div className="flex items-center">
@@ -606,6 +557,19 @@ export default function PeopleAdmin() {
                     />
                     <label className="ml-2 block text-sm text-gray-700">
                       Principal Investigator
+                    </label>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="isAlumni"
+                      checked={formData.isAlumni}
+                      onChange={handleInputChange}
+                      className="h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    />
+                    <label className="ml-2 block text-sm text-gray-700">
+                      Alumni
                     </label>
                   </div>
                 </div>
@@ -625,21 +589,50 @@ export default function PeopleAdmin() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Education</label>
                   {formData.education?.map((edu, index) => (
-                    <div key={index} className="flex items-center space-x-2 mt-2">
-                      <input
-                        type="text"
-                        value={edu}
-                        onChange={(e) => handleEducationChange(index, e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                        placeholder="Degree, Institution, Year"
-                      />
+                    <div key={index} className="border border-gray-200 rounded-lg p-4 mt-2 space-y-3">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-1">Degree</label>
+                          <select
+                            value={edu.degree}
+                            onChange={(e) => handleEducationChange(index, 'degree', e.target.value)}
+                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+                          >
+                            <option value="">Select degree</option>
+                            <option value="Bachelors">Bachelors</option>
+                            <option value="Masters">Masters</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-1">School</label>
+                          <input
+                            type="text"
+                            value={edu.school}
+                            onChange={(e) => handleEducationChange(index, 'school', e.target.value)}
+                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+                            placeholder="Institution name"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-medium text-gray-600 mb-1">Field of Study</label>
+                          <input
+                            type="text"
+                            value={edu.fieldOfStudy}
+                            onChange={(e) => handleEducationChange(index, 'fieldOfStudy', e.target.value)}
+                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-red-500 focus:border-red-500"
+                            placeholder="Field of study"
+                          />
+                        </div>
+                      </div>
                       {formData.education && formData.education.length > 1 && (
                         <button
                           type="button"
                           onClick={() => removeEducationField(index)}
-                          className="px-3 py-2 text-red-600 hover:text-red-800"
+                          className="text-sm text-red-600 hover:text-red-800"
                         >
-                          Remove
+                          Remove Education Entry
                         </button>
                       )}
                     </div>

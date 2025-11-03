@@ -33,27 +33,12 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
                 <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
                 <p className="text-gray-700 font-medium text-sm break-all">{person.email}</p>
               </div>
-              {person.phone && (
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                  <p className="text-gray-700 font-medium text-sm">{person.phone}</p>
-                </div>
-              )}
-              {person.address && (
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#ba0d2f' }}></div>
-                  <p className="text-gray-700 font-medium text-sm">{person.address}</p>
-                </div>
-              )}
             </div>
           </div>
         </div>
         <div className="lg:w-3/5 p-8 animate-fade-in-right">
           <h3 className="text-3xl font-bold text-gray-900 mb-3">{person.name}</h3>
-          <p className="text-xl font-semibold mb-4" style={{ color: '#ba0d2f' }}>{person.title}</p>
-          <p className="text-gray-600 mb-6">
-            {person.affiliation}
-          </p>
+          <p className="text-xl font-semibold mb-6" style={{ color: '#ba0d2f' }}>{person.title}</p>
           
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Research Focus</h4>
@@ -67,11 +52,17 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="space-y-2">
-              {person.education.map((degree, index) => (
-                <div key={index} className="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200">
-                  <p className="text-gray-700 font-medium text-sm">{degree}</p>
-                </div>
-              ))}
+              {person.education.map((edu, index) => {
+                const degreeText = edu.degree || '';
+                const schoolText = edu.school || '';
+                const fieldText = edu.fieldOfStudy || '';
+                const displayText = [degreeText, schoolText, fieldText].filter(Boolean).join(', ');
+                return (
+                  <div key={index} className="p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-all duration-200">
+                    <p className="text-gray-700 font-medium text-sm">{displayText}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -103,9 +94,6 @@ function TeamMemberCard({ person }: PersonCardProps) {
             <p className="text-sm font-semibold mb-2" style={{ color: '#ba0d2f' }}>
               {person.title}
             </p>
-            <p className="text-xs text-gray-600 leading-tight">
-              {person.affiliation}
-            </p>
           </div>
         </div>
 
@@ -122,9 +110,6 @@ function TeamMemberCard({ person }: PersonCardProps) {
           <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Contact</h4>
           <div className="space-y-1">
             <p className="text-xs text-gray-600 break-all">{person.email}</p>
-            {person.phone && (
-              <p className="text-xs text-gray-600">{person.phone}</p>
-            )}
           </div>
         </div>
 
@@ -133,11 +118,17 @@ function TeamMemberCard({ person }: PersonCardProps) {
           <div>
             <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="space-y-1">
-              {person.education.slice(0, 2).map((degree, index) => (
-                <p key={index} className="text-xs text-gray-600 line-clamp-1">
-                  {degree}
-                </p>
-              ))}
+              {person.education.slice(0, 2).map((edu, index) => {
+                const degreeText = edu.degree || '';
+                const schoolText = edu.school || '';
+                const fieldText = edu.fieldOfStudy || '';
+                const displayText = [degreeText, schoolText, fieldText].filter(Boolean).join(', ');
+                return (
+                  <p key={index} className="text-xs text-gray-600 line-clamp-1">
+                    {displayText}
+                  </p>
+                );
+              })}
               {person.education.length > 2 && (
                 <p className="text-xs text-gray-500">+{person.education.length - 2} more</p>
               )}
@@ -150,8 +141,9 @@ function TeamMemberCard({ person }: PersonCardProps) {
 }
 
 export default function People() {
-  const principalInvestigators = people.filter(person => person.isPrincipalInvestigator);
-  const teamMembers = people.filter(person => !person.isPrincipalInvestigator);
+  const principalInvestigators = people.filter(person => person.isPrincipalInvestigator && !person.isAlumni);
+  const teamMembers = people.filter(person => !person.isPrincipalInvestigator && !person.isAlumni);
+  const alumni = people.filter(person => person.isAlumni === true);
 
   return (
     <div>
@@ -184,6 +176,26 @@ export default function People() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamMembers.map((person, index) => (
+                <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <TeamMemberCard person={person} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Alumni Section */}
+      {alumni.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Alumni</h2>
+              <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: '#ba0d2f' }}></div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {alumni.map((person, index) => (
                 <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
                   <TeamMemberCard person={person} />
                 </div>

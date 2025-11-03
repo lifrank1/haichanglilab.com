@@ -11,18 +11,22 @@ export interface Publication {
   role?: 'first' | 'corresponding' | 'co-first' | 'co-corresponding';
 }
 
+export interface EducationEntry {
+  degree: string;
+  school: string;
+  fieldOfStudy: string;
+}
+
 export interface Person {
   id: string;
   name: string;
   title: string;
-  affiliation: string;
   image: string;
   researchFocus: string;
-  education: string[];
+  education: EducationEntry[];
   email: string;
-  phone: string;
-  address: string;
   isPrincipalInvestigator?: boolean;
+  isAlumni?: boolean;
 }
 
 export interface ResearchProject {

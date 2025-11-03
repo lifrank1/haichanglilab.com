@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import ImageCropper from './ImageCropper';
 import { Person, EducationEntry } from '../../../data/types';
 import { updateFile, uploadFile, validatePAT } from '../../../lib/github';
 
@@ -17,6 +18,8 @@ export default function PeopleAdmin() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [patAction, setPatAction] = useState<'save' | 'delete' | null>(null);
+  const [showCropper, setShowCropper] = useState(false);
+  const [cropSrc, setCropSrc] = useState<string | null>(null);
 
   // Form state
   const [formData, setFormData] = useState<Partial<Person>>({
@@ -92,8 +95,15 @@ export default function PeopleAdmin() {
       return;
     }
 
-    setSelectedFile(file);
-    setMessage(null);
+    // Open cropper modal instead of setting directly
+    try {
+      const url = URL.createObjectURL(file);
+      setCropSrc(url);
+      setShowCropper(true);
+      setMessage(null);
+    } catch (e) {
+      setMessage({ type: 'error', text: 'Failed to open image for cropping' });
+    }
   };
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,6 +138,19 @@ export default function PeopleAdmin() {
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
+  };
+
+  const handleCropCancel = () => {
+    if (cropSrc) URL.revokeObjectURL(cropSrc);
+    setCropSrc(null);
+    setShowCropper(false);
+  };
+
+  const handleCropDone = (file: File) => {
+    if (cropSrc) URL.revokeObjectURL(cropSrc);
+    setCropSrc(null);
+    setShowCropper(false);
+    setSelectedFile(file);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -664,6 +687,24 @@ export default function PeopleAdmin() {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Cropper Modal */}
+      {showCropper && cropSrc && (
+        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50" role="dialog" aria-modal="true">
+          <div className="relative top-10 mx-auto p-5 border w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 shadow-lg rounded-md bg-white">
+            <div className="mt-1">
+              <h3 className="text-lg font-medium text-gray-900 mb-3">Crop Headshot (1:1)</h3>
+              <ImageCropper
+                imageSrc={cropSrc}
+                aspect={1}
+                suggestedSlug={(formData.name || 'headshot')}
+                onCancel={handleCropCancel}
+                onCropped={handleCropDone}
+              />
             </div>
           </div>
         </div>

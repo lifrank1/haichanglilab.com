@@ -1,4 +1,4 @@
-import { Publication } from '../../data/publications';
+import { Publication } from '../../data/types';
 
 interface PublicationCardProps {
   publication: Publication;

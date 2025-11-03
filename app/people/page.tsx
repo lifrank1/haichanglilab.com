@@ -39,6 +39,19 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
         <div className="lg:w-3/5 p-8 animate-fade-in-right">
           <h3 className="text-3xl font-bold text-gray-900 mb-3">{person.name}</h3>
           <p className="text-xl font-semibold mb-6" style={{ color: '#ba0d2f' }}>{person.title}</p>
+          {person.id === 'haichang-li' && (
+            <div className="mb-6 flex flex-wrap gap-2">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                The Ohio State University Comprehensive Cancer Center
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                Department of Veterinary Biosciences, College of Veterinary Medicine
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                Department of Surgery, College of Medicine
+              </span>
+            </div>
+          )}
           
           <div className="mb-6">
             <h4 className="text-xl font-bold mb-3" style={{ color: '#ba0d2f' }}>Research Focus</h4>

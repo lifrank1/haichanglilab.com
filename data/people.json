@@ -27,23 +27,6 @@
     "isAlumni": false
   },
   {
-    "id": "umme-lubaba",
-    "name": "Umme Lubaba",
-    "title": "Graduate Research Assistant",
-    "image": "",
-    "researchFocus": "Cancer Biology\nCanine Cancer Model\nOsteosarcom",
-    "education": [
-      {
-        "degree": "Masters",
-        "school": "Sylhet Agricultural University",
-        "fieldOfStudy": ""
-      }
-    ],
-    "email": "lubaba.1@buckeyemail.osu.edu",
-    "isPrincipalInvestigator": false,
-    "isAlumni": false
-  },
-  {
     "id": "zhongguang-li",
     "name": "Zhongguang Li",
     "title": "Postdoc",

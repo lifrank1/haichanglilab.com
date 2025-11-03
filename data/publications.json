@@ -487,5 +487,16 @@
     "citations": 0,
     "doi": "10.3389/978-2-88971-524-4",
     "type": "book"
+  },
+  {
+    "title": "The Neonatal Fc Receptor (FcRn) is a pan-arterivirus receptor",
+    "authors": "Teressa M. Shaw, Devra Huey, Makky Mousa-Makky, Jared Compaleo, Kylie Nennig, Aadit P. Shah, Fei Jiang, Xueer Qiu, Devon Klipsic, Raymond R.R. Rowland, Igor I. Slukvin, Meagan E. Sullender, Megan T. Baldridge, Haichang Li, Cody J. Warren, Adam L. Bailey",
+    "journal": "Nature Communications",
+    "year": 2024,
+    "citations": 8,
+    "pmid": "39112502",
+    "doi": "",
+    "type": "article",
+    "id": "49"
   }
 ]

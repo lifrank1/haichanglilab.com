@@ -498,5 +498,17 @@
     "doi": "",
     "type": "article",
     "id": "49"
+  },
+  {
+    "title": "The cell membrane repair protein MG53 modulates transcription factor NF-κB signaling to control kidney fibrosis",
+    "authors": "Haichang Li, Pu Duann, Zhongguang Li, Xinyu Zhou, Jianjie Ma, Brad H. Rovin, Pei-Hui Lin",
+    "journal": "Kidney International",
+    "year": 2021,
+    "citations": 5,
+    "pmid": "PMC8741748",
+    "doi": "10.1016/j.kint.2021.09.027",
+    "type": "conference",
+    "role": "first",
+    "id": "50"
   }
 ]

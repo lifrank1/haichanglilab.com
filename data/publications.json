@@ -5,7 +5,7 @@
     "authors": "PH Lin, M Sermersheim, H Li, PHU Lee, SM Steinberg, J Ma",
     "journal": "Nutrients",
     "year": 2017,
-    "citations": 697,
+    "citations": 689,
     "doi": "10.3390/nu10010016",
     "type": "article"
   },
@@ -487,5 +487,16 @@
     "citations": 0,
     "doi": "10.3389/978-2-88971-524-4",
     "type": "book"
+  },
+  {
+    "title": "test",
+    "authors": "test",
+    "journal": "test",
+    "year": 2025,
+    "citations": 0,
+    "pmid": "",
+    "doi": "",
+    "type": "article",
+    "id": "49"
   }
 ]

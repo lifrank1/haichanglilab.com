@@ -42,5 +42,22 @@
     "email": "li.10025@osu.edu",
     "isPrincipalInvestigator": false,
     "isAlumni": false
+  },
+  {
+    "name": "Umme Lubaba",
+    "title": "Graduate Research Assistant",
+    "image": "/peopleheadshots/umme-lubaba-1762176544232.jpeg",
+    "researchFocus": "Cancer Biology, Canine Cancer Model, Osteosarcoma",
+    "education": [
+      {
+        "degree": "Masters",
+        "school": "Sylhet Agricultural University",
+        "fieldOfStudy": ""
+      }
+    ],
+    "email": "lubaba.1@buckeyemail.osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "umme-lubaba"
   }
 ]

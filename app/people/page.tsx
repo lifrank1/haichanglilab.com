@@ -42,13 +42,13 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
           {person.id === 'haichang-li' && (
             <div className="mb-6 flex flex-wrap gap-2">
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
-                The Ohio State University Comprehensive Cancer Center
-              </span>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
                 Department of Veterinary Biosciences, College of Veterinary Medicine
               </span>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
                 Department of Surgery, College of Medicine
+              </span>
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800 border border-gray-200">
+                The Ohio State University Comprehensive Cancer Center
               </span>
             </div>
           )}

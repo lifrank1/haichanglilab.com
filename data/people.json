@@ -195,5 +195,22 @@
     "isPrincipalInvestigator": false,
     "isAlumni": false,
     "id": "changhan-zhao"
+  },
+  {
+    "name": "Elyse Jones",
+    "title": "Research assistant",
+    "image": "/peopleheadshots/elyse-jones-1763694826920.jpg",
+    "researchFocus": "Aging \nCancer Biology\nTranslational Medicine",
+    "education": [
+      {
+        "degree": "Bachelors",
+        "school": "The Ohio State University",
+        "fieldOfStudy": "Biology"
+      }
+    ],
+    "email": "jones.8099@buckeyemail.osu.edu",
+    "isPrincipalInvestigator": false,
+    "isAlumni": false,
+    "id": "elyse-jones"
   }
 ]

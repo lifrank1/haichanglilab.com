@@ -45,18 +45,11 @@ function ResearchProjectCard({ project }: ResearchProjectCardProps) {
         </div>
       )}
       
-      {(project.collaborators || project.funding) && (
+      {project.funding && (
         <div className="pt-4 border-t border-gray-100">
-          {project.collaborators && (
-            <p className="text-sm text-gray-600 mb-1">
-              <span className="font-medium">Collaborators:</span> {project.collaborators.join(', ')}
-            </p>
-          )}
-          {project.funding && (
-            <p className="text-sm text-gray-600">
-              <span className="font-medium">Funding:</span> {project.funding}
-            </p>
-          )}
+          <p className="text-sm text-gray-600">
+            <span className="font-medium">Funding:</span> {project.funding}
+          </p>
         </div>
       )}
     </div>

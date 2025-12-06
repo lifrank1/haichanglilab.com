@@ -35,6 +35,5 @@ export interface ResearchProject {
   description: string;
   keyFindings?: string[];
   status: 'active' | 'completed' | 'upcoming';
-  collaborators?: string[];
   funding?: string;
 }

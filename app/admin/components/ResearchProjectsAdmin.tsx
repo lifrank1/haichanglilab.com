@@ -21,7 +21,6 @@ export default function ResearchProjectsAdmin() {
     description: '',
     keyFindings: [''],
     status: 'active',
-    collaborators: [''],
     funding: '',
   });
 
@@ -72,26 +71,6 @@ export default function ResearchProjectsAdmin() {
     }));
   };
 
-  const handleCollaboratorsChange = (index: number, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      collaborators: prev.collaborators?.map((collab, i) => i === index ? value : collab) || ['']
-    }));
-  };
-
-  const addCollaborator = () => {
-    setFormData(prev => ({
-      ...prev,
-      collaborators: [...(prev.collaborators || []), '']
-    }));
-  };
-
-  const removeCollaborator = (index: number) => {
-    setFormData(prev => ({
-      ...prev,
-      collaborators: prev.collaborators?.filter((_, i) => i !== index) || ['']
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,7 +101,6 @@ export default function ResearchProjectsAdmin() {
         ...formData as ResearchProject,
         id: editingProject?.id || generateId(formData.title || ''),
         keyFindings: formData.keyFindings?.filter(finding => finding.trim() !== '') || [],
-        collaborators: formData.collaborators?.filter(collab => collab.trim() !== '') || [],
       };
 
       // Update research projects array
@@ -170,7 +148,6 @@ export default function ResearchProjectsAdmin() {
     setFormData({
       ...project,
       keyFindings: project.keyFindings && project.keyFindings.length > 0 ? project.keyFindings : [''],
-      collaborators: project.collaborators && project.collaborators.length > 0 ? project.collaborators : [''],
     });
     setShowForm(true);
   };
@@ -236,7 +213,6 @@ export default function ResearchProjectsAdmin() {
       description: '',
       keyFindings: [''],
       status: 'active',
-      collaborators: [''],
       funding: '',
     });
     setEditingProject(null);
@@ -409,37 +385,6 @@ export default function ResearchProjectsAdmin() {
                     className="mt-2 px-3 py-1 text-sm text-red-600 hover:text-red-800 border border-red-300 rounded-md hover:bg-red-50"
                   >
                     Add Key Finding
-                  </button>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Collaborators</label>
-                  {formData.collaborators?.map((collab, index) => (
-                    <div key={index} className="flex items-center space-x-2 mt-2">
-                      <input
-                        type="text"
-                        value={collab}
-                        onChange={(e) => handleCollaboratorsChange(index, e.target.value)}
-                        className="flex-1 border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-red-500 focus:border-red-500"
-                        placeholder="Collaborator name"
-                      />
-                      {formData.collaborators && formData.collaborators.length > 1 && (
-                        <button
-                          type="button"
-                          onClick={() => removeCollaborator(index)}
-                          className="px-3 py-2 text-red-600 hover:text-red-800"
-                        >
-                          Remove
-                        </button>
-                      )}
-                    </div>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={addCollaborator}
-                    className="mt-2 px-3 py-1 text-sm text-red-600 hover:text-red-800 border border-red-300 rounded-md hover:bg-red-50"
-                  >
-                    Add Collaborator
                   </button>
                 </div>
                 

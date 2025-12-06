@@ -9,7 +9,6 @@
       "Enhances cell survival under stress conditions"
     ],
     "status": "active",
-    "collaborators": ["Dr. Jane Smith", "Dr. John Doe"],
     "funding": "NIH R01 Grant"
   },
   {
@@ -22,7 +21,6 @@
       "Opens new therapeutic avenues for cancer treatment"
     ],
     "status": "active",
-    "collaborators": ["Dr. Sarah Johnson"],
     "funding": "American Cancer Society"
   },
   {
@@ -35,7 +33,6 @@
       "Promising results for chronic wound treatment in diabetic patients"
     ],
     "status": "active",
-    "collaborators": ["Dr. Michael Chen", "Dr. Lisa Wang"],
     "funding": "NSF Grant"
   },
   {
@@ -48,7 +45,6 @@
       "Demonstrates translational potential for tissue injury treatment"
     ],
     "status": "active",
-    "collaborators": ["Dr. Robert Kim", "Dr. Maria Garcia"],
     "funding": "Industry Partnership"
   }
 ]

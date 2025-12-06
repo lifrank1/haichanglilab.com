@@ -20,7 +20,7 @@ function ResearchProjectCard({ project }: ResearchProjectCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group">
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-xl hover-lift transition-all duration-300 p-8 border border-gray-200 group h-full flex flex-col">
       <div className="flex justify-between items-start mb-4">
         <h3 className="text-xl font-bold group-hover:text-osu-scarlet transition-colors duration-300" style={{ color: '#ba0d2f' }}>
           {project.title}
@@ -46,7 +46,7 @@ function ResearchProjectCard({ project }: ResearchProjectCardProps) {
       )}
       
       {project.funding && (
-        <div className="pt-4 border-t border-gray-100">
+        <div className="pt-4 border-t-2 border-gray-300 mt-auto">
           <p className="text-sm text-gray-600">
             <span className="font-medium">Funding:</span> {project.funding}
           </p>
@@ -94,7 +94,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {researchProjects.map((project, index) => (
-              <div key={project.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={project.id} className="animate-fade-in-up h-full" style={{ animationDelay: `${index * 0.1}s` }}>
                 <ResearchProjectCard project={project} />
               </div>
             ))}

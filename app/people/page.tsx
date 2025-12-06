@@ -87,8 +87,8 @@ function PrincipalInvestigatorCard({ person }: PersonCardProps) {
 // Compact card for team members
 function TeamMemberCard({ person }: PersonCardProps) {
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
-      <div className="p-6">
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group h-full flex flex-col">
+      <div className="p-6 flex flex-col flex-grow">
         {/* Image and basic info */}
         <div className="flex items-start space-x-4 mb-4">
           <div className="flex-shrink-0">
@@ -111,7 +111,7 @@ function TeamMemberCard({ person }: PersonCardProps) {
         </div>
 
         {/* Research Focus */}
-        <div className="mb-4">
+        <div className="pt-4 pb-4 border-t-2 border-gray-300">
           <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Research Focus</h4>
           <p className="text-xs text-gray-700 leading-relaxed line-clamp-3">
             {person.researchFocus}
@@ -119,7 +119,7 @@ function TeamMemberCard({ person }: PersonCardProps) {
         </div>
 
         {/* Contact Info */}
-        <div className="mb-4">
+        <div className="pt-4 pb-4 border-t-2 border-gray-300">
           <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Contact</h4>
           <div className="space-y-1">
             <p className="text-xs text-gray-600 break-all">{person.email}</p>
@@ -128,7 +128,7 @@ function TeamMemberCard({ person }: PersonCardProps) {
 
         {/* Education */}
         {person.education && person.education.length > 0 && (
-          <div>
+          <div className="pt-4 pb-4 border-t-2 border-gray-300">
             <h4 className="text-sm font-bold mb-2" style={{ color: '#ba0d2f' }}>Education</h4>
             <div className="space-y-1">
               {person.education.slice(0, 2).map((edu, index) => {
@@ -189,7 +189,7 @@ export default function People() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {teamMembers.map((person, index) => (
-                <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div key={person.id} className="animate-fade-in-up h-full" style={{ animationDelay: `${index * 0.1}s` }}>
                   <TeamMemberCard person={person} />
                 </div>
               ))}
@@ -209,7 +209,7 @@ export default function People() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {alumni.map((person, index) => (
-                <div key={person.id} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div key={person.id} className="animate-fade-in-up h-full" style={{ animationDelay: `${index * 0.1}s` }}>
                   <TeamMemberCard person={person} />
                 </div>
               ))}
